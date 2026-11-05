@@ -1,0 +1,15 @@
+@relation Movies
+@attribute 'Type' { Comedy, Animated, Drama}
+@attribute 'Length' { Short, Medium, Long}
+@attribute 'Director' { Adamson, Lasseter, Singer}
+@attribute 'Famous_actors' { Yes, No}
+@attribute 'class' { No, Yes}
+@dataComedy,Short,Adamson,No,Yes
+Animated,Short,Lasseter,No,No
+Drama,Medium,Adamson,No,Yes
+Animated,Long,Lasseter,Yes,No
+Comedy,Long,Lasseter,Yes,No
+Drama,Medium,Singer,Yes,Yes
+Animated,Short,Singer,No,Yes
+Comedy,Long,Adamson,Yes,Yes
+Drama,Medium,Lasseter,No,Yes

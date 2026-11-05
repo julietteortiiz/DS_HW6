@@ -1,0 +1,7 @@
+Feature | Information gain (bits) | Training accuracy
+Type | 0.306099 | 0.666667
+Length | 0.306099 | 0.666667
+Director | 0.557728 | 0.666667
+Famous_actors | 0.072780 | 0.666667
+best feature: Director
+best feature by accuracy: Type
