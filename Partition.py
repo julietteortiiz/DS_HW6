@@ -45,6 +45,9 @@ class Partition:
             if example.label == c:
                 count += 1
         #print("Prob for " + str(c) + ": " + str(count / self.n))
+        if self.n == 0:
+            return 0
+            
         return count / self.n  
 
     def _probX(self, f: str, val: str) -> float:
@@ -72,6 +75,8 @@ class Partition:
                 if example.label == c:
                     count += 1
         #print("Prob for feature: " + f + "and val: " + val + "and label: " + str(c) +  "=" + str(count / tot))
+        if tot == 0:
+            return 0
         return count / tot
 
    
@@ -81,7 +86,9 @@ class Partition:
         h = []
         for label in labels:
             p = self._prob(label)
-            ig = -math.log2(p)
+            ig = 0
+            if p != 0:
+                ig = -math.log2(p)
             h.append(p*ig)
         #print("TESTING ENTROPY IS: " + str(sum(h)))
         return sum(h)     
@@ -92,9 +99,9 @@ class Partition:
         labels = [-1, 1]
         for label in labels:
             cp = self._cond_prob(feature, val, label)
-            if cp == 0:
-                continue
-            ig = -math.log2(cp)
+            ig = 0
+            if cp != 0:
+                ig = -math.log2(cp)
             hyx += cp * ig
         #print("TESTING _COND ENTROPY")
         #print("Entropy for feature: " + feature + "and val: " + val + "= " + str(hyx))
@@ -129,6 +136,9 @@ class Partition:
             else:
                 c2 += 1
         
+        if self.n == 0:
+            return 0
+
         if c1 > c2:
             return c1 / self.n
         else:
