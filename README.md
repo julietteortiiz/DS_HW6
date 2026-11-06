@@ -13,12 +13,6 @@ only a calculator for arithmetic. Submit the completed worksheet as
 
 ### Analysis
 
-1. What is the expected number of bits per character for your source-based
-   Shannon code? Compute `sum(p(c) * length(code(c)))` using the source
-   character probabilities. Is this higher or lower than you expected?
-   Explain what you used as a comparison. As a check, compare the expected
-   length with the source entropy: a Shannon code satisfies
-   `H(C) <= expected length < H(C) + 1` for this nontrivial source alphabet.
 2. For each of tennis, movies, heart, and diabetes, report the feature
    selected by information gain, its gain, the feature selected by training
    accuracy, and its accuracy. Include any ties. Did the two criteria ever
@@ -27,22 +21,33 @@ only a calculator for arithmetic. Submit the completed worksheet as
 
 Document how you resolve ties between features, as requested in Part 2.
 
-#### Question 1 response
+TENNIS
+Feature Selected By IG: Outlook
+Gain: 0.246750
+Feature Selected by Training Accuracy: Wind
+Accuracy: 0.857143
+Ties:
 
-Expected bits per character:
+MOVIES
+Feature Selected By IG: Director
+Gain: 0.557728
+Feature Selected by Training Accuracy: Director
+Accuracy: 0.888889
+Ties:
 
-Source entropy:
+HEART
+Feature Selected By IG: thal
+Gain: 0.253262
+Feature Selected by Training Accuracy: chol<=218.0
+Accuracy:0.915000
+Ties:
 
-Comparison and explanation:
-
-#### Question 2 response
-
-| Dataset | Feature selected by information gain | Information gain (bits) | Feature selected by training accuracy | Training accuracy | Ties |
-| --- | --- | --- | --- | --- | --- |
-| Tennis | | | | | |
-| Movies | | | | | |
-| Heart | | | | | |
-| Diabetes | | | | | |
+DIABETES
+Feature Selected By IG: plas<=127.5
+Gain: 0.143300 
+Feature Selected by Training Accuracy: insu<=129.5
+Accuracy: 0.778443
+Ties:
 
 Tie-breaking rule:
 
@@ -64,10 +69,16 @@ assignments in the future)
 1. Approximately, how many hours did you take to complete this homework? (provide
   your answer as a single integer on the line below)
 
+8
+
 2. How difficult did you find this homework? (1-5, with 5 being very difficult and 1
   being very easy)
 
+3
+
 3. Describe the biggest challenge you faced on this homework:
+
+
 
 ### Implementation and checks
 

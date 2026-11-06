@@ -47,17 +47,15 @@ class Partition:
         #print("Prob for " + str(c) + ": " + str(count / self.n))
         if self.n == 0:
             return 0
-            
+
         return count / self.n  
 
     def _probX(self, f: str, val: str) -> float:
         """Return P(X_f=val); an unobserved value contributes zero."""
         count = 0
-        #print("TESTING PROB X")
         for example in self.data:
             if example.features.get(f) == val:
                 count += 1
-        #print("Prob for feature: " + f + " and val: " + val + "=" + str(count / self.n))
         return count / self.n
 
     def _cond_prob(self, f: str, val: str, c: int) -> float:
@@ -128,21 +126,17 @@ class Partition:
         """Return training accuracy when each feature-value group predicts its majority.
         A label tie does not change the number correct; unused values add zero.
         """
-        c1 = 0 #1
-        c2 = 0 #-1
-        for example in self.data:
-            if example.label == 1:
-                c1 += 1
-            else:
-                c2 += 1
-        
-        if self.n == 0:
-            return 0
-
-        if c1 > c2:
-            return c1 / self.n
-        else:
-            return c2 / self.n
+        total_accuracy = 0
+        for val in self.F.get(feature):
+                c1p = self._cond_prob(feature, val, -1)
+                c2p = self._cond_prob(feature, val, 1)
+                if c1p == c2p: #equally probable
+                    total_accuracy += 0.5 * self._probX(feature, val)
+                if c1p > c2p: #-1 majority
+                    total_accuracy += c1p * self._probX(feature, val)
+                else: #1 majority
+                    total_accuracy += c2p * self._probX(feature, val)
+        return total_accuracy        
 
     def best_feature(self) -> str:
         """Return the feature with greatest information gain, including zero gains."""
